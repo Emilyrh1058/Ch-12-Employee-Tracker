@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Emilyrh1058/Ch-12-Employee-Tracker/issues"
   },
-  "homepage": "https://github.com/Emilyrh1058/Ch-12-Employee-Tracker#readme"
+  "homepage": "https://github.com/Emilyrh1058/Ch-12-Employee-Tracker#readme",
+  "dependencies": {
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
 }
