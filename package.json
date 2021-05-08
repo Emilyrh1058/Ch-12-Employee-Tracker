@@ -1,0 +1,20 @@
+{
+  "name": "ch-12-employee-tracker",
+  "version": "1.0.0",
+  "description": "Employee Tracker app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emilyrh1058/Ch-12-Employee-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emilyrh1058/Ch-12-Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Emilyrh1058/Ch-12-Employee-Tracker#readme"
+}
