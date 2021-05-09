@@ -1,4 +1,4 @@
-const trackerApp = require("./lib/app");
+const trackerApp = require("./app");
 const app = new trackerApp();
 
 app.start();
