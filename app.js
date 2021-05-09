@@ -2,6 +2,14 @@ const inquirer = require("inquirer");
 const fetch = require('node-fetch')
 const cTable = require('console.table');
 
+let empTable = [];  //in view all employees
+let departments = [];  // create new role
+let managers = [];  // create and update
+let roles = [];  // add new and update employee
+
+let onlyDepts = [];
+let onlyManagers = [];
+let onlyRoles = [];
 
 
 
@@ -136,6 +144,108 @@ class trackerApp {
         console.log(err);
       });
   }
+
+
+  createRole() {
+    inquirer
+      .prompt(this.addRolePrompt)
+      .then(async data => {
+        for (let i = 0; i < departments.length; i++) {
+          if (departments[i].name === data.department_id) {
+            data.department_id = departments[i].id;
+            break;
+          }
+        }            
+        await addRolePrompt(data);
+        return this.mainPrompt();
+    })
+
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+
+  addEmployee() {
+    inquirer
+      .prompt(this.addEmpPrompt)
+      .then(async data => {
+        for (let i = 0; i < roles.length; i++) {
+          if (roles[i].role === data.role_id) {
+            data.role_id = roles[i].id;
+            break
+          }
+        }
+        if (data.manager_id === "none") {
+          data.manager_id = "null"
+        } else {
+            for (let i = 0; i < managers.length; i++) {
+              if (managers[i].manager === data.manager_id) {
+                data.manager_id = managers[i].id;
+                break
+              }
+            }
+        }
+        await this.addEmpPrompt(data);
+        return this.mainPrompt();
+      })
+      
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  empRoleUpdate() {
+    inquirer
+      .prompt(this.updateRolePrompt)
+      .then(async data => {
+        for (let i = 0; i < roles.length; i++) {
+          if (roles[i].role === data.role_id) {
+            data.role_id = roles[i].id;
+            break
+          }
+        }
+        for (let i = 0; i < managers.length; i++) {
+          if (managers[i].manager === data.id) {
+            data.id = managers[i].id;
+            break
+          }
+        }
+        await this.updateRole(data);
+        return this.mainPrompt();
+      });
+  }
+
+  homeMenu() {
+    inquirer
+    .prompt(this.mainPrompt)
+    .then(async data => {
+      switch(data.toDo) {
+        case "View All Employees ":
+        
+        case "View All Employees By Department ":
+
+        case "View All Employees By Manager ":
+
+        case "Add An Employee":
+
+        case "Remove An Employee,":
+
+        case "Update Employee Role":
+
+        case "Update Employee Manager":
+
+
+      }
+    })
+  }
 }
 
 module.exports = trackerApp;
+
+
+
+
+
+
+
