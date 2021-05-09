@@ -57,7 +57,7 @@ class trackerApp {
       {
         type: "input",
         name: "salary",
-        message: ({ role }) => `Please enter the ${role}'s salary:`,
+        message: ({role}) => `Please enter the ${role}'s salary:`,
         validate: nameInput => {
           if (nameInput) {
             return true;
@@ -69,7 +69,7 @@ class trackerApp {
       {
         type: "list",
         name: "deptId",
-        message: ({ role }) => `To what department is ${role} assigned?`,
+        message: ({role}) => `To what department is ${role} assigned?`,
         choices: "" // add departments here
       }
 
@@ -104,13 +104,13 @@ class trackerApp {
       {
         type: "list",
         name: "role_id",
-        message: ({ first_name }) => `What ROLE will ${first_name} be assigned?`,
+        message: ({first_name}) => `What ROLE will ${first_name} be assigned?`,
         choices: "" // add roles here
       },
       {
         type: "list",
         name: "manager_id",
-        message: ({ first_name }) => `To what MANAGER will ${first_name} be assigned?`,
+        message: ({first_name}) => `To what MANAGER will ${first_name} be assigned?`,
         choices: "" // add manager id's here
       }
     ];
