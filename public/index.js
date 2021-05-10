@@ -1,4 +1,4 @@
-const trackerApp = require("./lib/app");
-const app = new trackerApp();
+// const trackerApp = require("../app");
+// const app = new trackerApp();
 
-app.start();
+// app.start();

@@ -11,9 +11,9 @@ let onlyDepts = [];
 let onlyManagers = [];
 let onlyRoles = [];
 
-const {getDept, addDept} = require('./dept');
-const {getEmployees, addEmployee, getManagers, updateRole} = require('./employees');
-const {getRoles, addRole} = require('./roles')
+const {getDept, addDept} = require('./public/lib/dept');
+const {getEmployees, addEmployee, getManagers, updateRole} = require('./public/lib/employees');
+const {getRoles, addRole} = require('./public/lib/roles')
 
 class trackerApp {
   constructor() {
