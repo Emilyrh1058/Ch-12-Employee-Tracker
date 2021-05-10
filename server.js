@@ -1,6 +1,6 @@
 const express = require('express');
 const inquirer = require("inquirer");
-const db = require("./db/connect");
+const db = require("./db/connection");
 const apiRoutes = require("./routes/apiRoutes")
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -18,7 +18,7 @@ app.use((req, res) => {
 });
 
 
-db.connect(err => {
+db.connection(err => {
   if (err) throw err;
   console.log('Database connected.');
   app.listen(PORT, () => {

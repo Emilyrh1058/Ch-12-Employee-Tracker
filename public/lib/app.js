@@ -11,9 +11,9 @@ let onlyDepts = [];
 let onlyManagers = [];
 let onlyRoles = [];
 
-const {getDept, addDept} = require('./lib/dept');
-const {getEmployees, addEmployee, getManagers, updateRole} = require('./lib/employees');
-const {getRoles, addRole} = require('./lib/roles')
+const {getDept, addDept} = require('./dept');
+const {getEmployees, addEmployee, getManagers, updateRole} = require('./employees');
+const {getRoles, addRole} = require('./roles')
 
 class trackerApp {
   constructor() {
@@ -72,9 +72,8 @@ class trackerApp {
         type: "list",
         name: "deptId",
         message: ({role}) => `To what department is ${role} assigned?`,
-        choices: "" // add departments here
+        choices: onlyDepts
       }
-
     ];  
 
 
@@ -107,13 +106,13 @@ class trackerApp {
         type: "list",
         name: "role_id",
         message: ({first_name}) => `What ROLE will ${first_name} be assigned?`,
-        choices: "" // add roles here
+        choices: onlyRoles
       },
       {
         type: "list",
         name: "manager_id",
         message: ({first_name}) => `To what MANAGER will ${first_name} be assigned?`,
-        choices: "" // add manager id's here
+        choices: onlyManagers
       }
     ];
 
@@ -123,13 +122,13 @@ class trackerApp {
         type: "list",
         name: "id",
         message: "Please select the employee's id you would like to update:",
-        choices: "" // add roles here
+        choices: onlyManagers
       },
       {
         type: "list",
         name: "newRole",
         message: "Select the employee's new role:",
-        choices: "" // new role here
+        choices: onlyRoles
       }
     ];
   }
@@ -148,7 +147,7 @@ class trackerApp {
   }
 
 
-  createRole() {
+  createRole(onlyDepts) {
     inquirer
       .prompt(this.addRolePrompt)
       .then(async data => {
@@ -168,7 +167,7 @@ class trackerApp {
   }
 
 
-  addEmployee() {
+  addEmployee(onlyManagers, onlyRoles) {
     inquirer
       .prompt(this.addEmpPrompt)
       .then(async data => {
@@ -197,7 +196,7 @@ class trackerApp {
       });
   }
 
-  empRoleUpdate() {
+  empRoleUpdate(onlyManagers, onlyRoles) {
     inquirer
       .prompt(this.updateRolePrompt)
       .then(async data => {
@@ -218,36 +217,59 @@ class trackerApp {
       });
   }
 
-  homeMenu() {
+  mainPrompt() {
     inquirer
     .prompt(this.mainPrompt)
     .then(async data => {
       switch(data.toDo) {
         case "View All Employees ":
-        
-        case "View All Employees By Department ":
+          empTable = await getEmployees();
+          console.table("\n\n All Employees", empTable);
+          console.log("\n")
+          return this.mainPrompt();
 
-        case "View All Employees By Manager ":
+        case "View All Employees By Department ":
+          console.table("\n\n All Departments", await getDept());
+          console.log("\n")
+          return this.mainPrompt();
 
         case "Add An Employee":
-
+          roles = await getRoles();
+          for (let i =0; i < roles.length; i++) {
+            onlyRoles[i] = roles[i].role;
+          }
+          managers = await getManagers();
+          for (let i = 0; i < managers.length; i++) {
+            onlyManagers[i] = managers[i].manager;
+        }
+        onlyManagers.unshift("none");
+        return this.addEmpPrompt(onlyManagers, onlyRoles);
         case "Remove An Employee,":
 
         case "Update Employee Role":
+          departments = await getDepartments();
+          for (let i = 0; i < departments.length; i++) {
+            onlyDepts[i]=departments[i].name;
+          }
+          managers = await getManagers();
+          for (let i = 0; i < managers.length; i++) {
+            managersOnly[i] = managers[i].manager;
+        }
+        return this.empRoleUpdate(onlyManagers, onlyRoles);
 
-        case "Update Employee Manager":
-
-
+        case "Quit":
+          return this.quitPrompt();
       }
     })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  quitPrompt() {
+    console.log(`You've exited the prompt.`);
+    return
   }
 }
 
 module.exports = trackerApp;
-
-
-
-
-
-
-
