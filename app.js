@@ -22,8 +22,18 @@ function mainPrompt() {
       choices: ["View All Employees, View All Employees By Department, View All Employees By Manager, Add An Employee, Remove An Employee, Update Employee Role, Update Employee Manager"],
     },
   ])
-  .then(function (response) {
-    
+  .then(function (response) {                                               // MAKE SURE TO LOOK AT THE MOCK UP FOR THE CRITERIA BEFORE REDOING ALL THE FUNCTIONS //
+    if (response.option === "View All Employees") {
+      // function();
+    } else if (response.option === "View All Employees By Department") {
+      // function();
+    } else if (response.option === "View All Employees By Manager") {
+      // function();
+    } else {
+      fs.writeFile('index.html', generateHtml(employeeArr), err => {
+        if (err) throw err;
+        console.log('Portfolio complete! Check out index.html to see the output!');
+
   })
 } 
       {
@@ -270,10 +280,10 @@ function mainPrompt() {
     })
   }
 
-  quitPrompt() {
+quitPrompt() {
     console.log(`You've exited the prompt.`);
     return
-  }
 }
+
 
 module.exports = trackerApp;
