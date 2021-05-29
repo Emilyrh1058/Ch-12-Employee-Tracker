@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const fetch = require('node-fetch')
 const cTable = require('console.table');
 const connect = require("db");
+const mysql = require('mysql2')
 
 let empTable = [];  //in view all employees
 let departments = [];  // create new role
@@ -11,6 +12,14 @@ let roles = [];  // add new and update employee
 let onlyDepts = [];
 let onlyManagers = [];
 let onlyRoles = [];
+
+// connection.query(                  ** FROM LA...NEED TO CREATE MY OWN QUERIES
+//   'SELECT * FROM `emp_db`',
+//   function(err, results, fields) {
+//     console.log(results); // results contains rows returned by server
+//     console.log(fields); // fields contains extra meta data about results, if available
+//   }
+// );
 
 // REDO ALL PROMPT AND PROMISES TO MATCH THIS FIRST PROMPT! *review team profile gen.*
 function mainPrompt() {
