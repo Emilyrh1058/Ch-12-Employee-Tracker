@@ -1,30 +1,41 @@
 const inquirer = require("inquirer");
 const fetch = require('node-fetch')
 const cTable = require('console.table');
+const connect = require("db");
 
 let empTable = [];  //in view all employees
 let departments = [];  // create new role
 let managers = [];  // create and update
 let roles = [];  // add new and update employee
 
-// let onlyDepts = [];
-// let onlyManagers = [];
-// let onlyRoles = [];
+let onlyDepts = [];
+let onlyManagers = [];
+let onlyRoles = [];
 
 // REDO ALL PROMPT AND PROMISES TO MATCH THIS FIRST PROMPT! *review team profile gen.*
 function mainPrompt() {
   inquirer
-  .prompt([
-    {
-      type: "list",
-      name: "toDo",
-      message: "What would you like to do?",
-      choices: ["View All Employees, View All Employees By Department, View All Employees By Manager, Add An Employee, Remove An Employee, Update Employee Role, Update Employee Manager"],
-    },
+    .prompt([
+      {
+        type: "list",
+        name: "toDo",
+        message: "What would you like to do?",
+        choices: [
+          "View All Employees", 
+          "View All Employees By Department", 
+          "View All Employees By Manager", 
+          "Add An Employee", 
+          "Remove An Employee", 
+          "Update Employee Role", 
+          "Update Employee Manager"
+        ],
+      },
   ])
+
   .then(function (response) {    // MAKE SURE TO LOOK AT THE MOCK UP FOR THE CRITERIA BEFORE REDOING ALL THE FUNCTIONS //
     if (response.option === "View All Employees") {
-      // function();
+      console.log(response)
+        return getEmployees;
     } else if (response.option === "View All Employees By Department") {
       // function();
     } else if (response.option === "View All Employees By Manager") {
@@ -273,9 +284,9 @@ function mainPrompt() {
     })
 };
 
-quitPrompt() 
+function quitPrompt() {
   console.log(`You've exited the prompt.`);
   return
+}
 
-
-module.exports = trackerApp;
+module.exports = mainPrompt();
