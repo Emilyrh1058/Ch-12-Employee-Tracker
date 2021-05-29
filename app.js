@@ -22,7 +22,7 @@ function mainPrompt() {
       choices: ["View All Employees, View All Employees By Department, View All Employees By Manager, Add An Employee, Remove An Employee, Update Employee Role, Update Employee Manager"],
     },
   ])
-  .then(function (response) {                                               // MAKE SURE TO LOOK AT THE MOCK UP FOR THE CRITERIA BEFORE REDOING ALL THE FUNCTIONS //
+  .then(function (response) {    // MAKE SURE TO LOOK AT THE MOCK UP FOR THE CRITERIA BEFORE REDOING ALL THE FUNCTIONS //
     if (response.option === "View All Employees") {
       // function();
     } else if (response.option === "View All Employees By Department") {
@@ -33,13 +33,8 @@ function mainPrompt() {
       fs.writeFile('index.html', generateHtml(employeeArr), err => {
         if (err) throw err;
         console.log('Portfolio complete! Check out index.html to see the output!');
-
-  })
-} 
-      {
-      }
-    ];
-
+      })
+    } 
 
     this.addDeptPrompt = [
       {
@@ -127,7 +122,7 @@ function mainPrompt() {
         name: "manager_id",
         message: ({first_name}) => `To what MANAGER will ${first_name} be assigned?`,
         choices: onlyManagers
-      }
+      },
     ];
 
 
@@ -143,11 +138,11 @@ function mainPrompt() {
         name: "newRole",
         message: "Select the employee's new role:",
         choices: onlyRoles
-      }
+      },
     ];
-  }
+  });
 
-  createDept() {
+  createDept() 
     inquirer
       .prompt(this.addDeptPrompt)
       .then(async data => {
@@ -158,10 +153,9 @@ function mainPrompt() {
       .catch(err => {
         console.log(err);
       });
-  }
 
 
-  createRole(onlyDepts) {
+  createRole(onlyDepts) 
     inquirer
       .prompt(this.addRolePrompt)
       .then(async data => {
@@ -177,11 +171,10 @@ function mainPrompt() {
 
     .catch(err => {
       console.log(err);
-    });
-  }
+    })
 
 
-  addEmployee(onlyManagers, onlyRoles) {
+  addEmployee(onlyManagers, onlyRoles) 
     inquirer
       .prompt(this.addEmpPrompt)
       .then(async data => {
@@ -207,10 +200,10 @@ function mainPrompt() {
       
       .catch(err => {
         console.log(err);
-      });
-  }
+      })
+  
 
-  empRoleUpdate(onlyManagers, onlyRoles) {
+  empRoleUpdate(onlyManagers, onlyRoles) 
     inquirer
       .prompt(this.updateRolePrompt)
       .then(async data => {
@@ -228,10 +221,10 @@ function mainPrompt() {
         }
         await this.updateRole(data);
         return this.mainPrompt();
-      });
-  }
+      })
 
-  mainPrompt() {
+
+  mainPrompt() 
     inquirer
     .prompt(this.mainPrompt)
     .then(async data => {
@@ -278,12 +271,11 @@ function mainPrompt() {
     .catch(err => {
       console.log(err);
     })
-  }
+};
 
-quitPrompt() {
-    console.log(`You've exited the prompt.`);
-    return
-}
+quitPrompt() 
+  console.log(`You've exited the prompt.`);
+  return
 
 
 module.exports = trackerApp;
