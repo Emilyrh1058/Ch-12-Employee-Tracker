@@ -42,14 +42,14 @@ function mainPrompt() {
       },
   ])
 
-  .then(function (response) {    // MAKE SURE TO LOOK AT THE MOCK UP FOR THE CRITERIA BEFORE REDOING ALL THE FUNCTIONS //
+  .then(function (response) {
     if (response.option === "View All Employees") {
-      console.log(response)
+      // console.log(response)
         return getEmployees;
     } else if (response.option === "View All Employees By Department") {
-      // function();
+        return getDepartments;
     } else if (response.option === "View All Employees By Manager") {
-      // function();
+        return getManagers;
     } else {
       fs.writeFile('index.html', generateHtml(employeeArr), err => {
         if (err) throw err;
@@ -71,7 +71,6 @@ function mainPrompt() {
         }
       }
     ];
-
 
     this.addRolePrompt = [
       {
@@ -163,18 +162,17 @@ function mainPrompt() {
     ];
   });
 
-  createDept() 
+  function createDept() {
     inquirer
       .prompt(this.addDeptPrompt)
       .then(async data => {
         await addDeptPrompt(data);
         return this.mainPrompt();
       })
-
-      .catch(err => {
+      .catch (err => {
         console.log(err);
       });
-
+    }
 
   createRole(onlyDepts) 
     inquirer
@@ -291,7 +289,7 @@ function mainPrompt() {
     })
     .catch(err => {
       console.log(err);
-    })
+})
 };
 
 function quitPrompt() {
