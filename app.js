@@ -31,31 +31,51 @@ function mainPrompt() {
         name: "toDo",
         message: "What would you like to do?",
         choices: [
-          "View All Employees", 
-          "View All Employees By Department", 
-          "View All Employees By Manager", 
-          "Add An Employee", 
-          "Remove An Employee", 
-          "Update Employee Role", 
-          "Update Employee Manager"
+          {
+            name: "View All Employees",
+            value: "VIEW_EMPLOYEES"
+          },
+          {
+            name:"View All Employees By Department",
+            value: "VIEW_BY_DEPARTMENT"
+          },
+          {
+            name: "View All Employees By Manager", 
+            value:"VIEW_BY_MANAGER"
+          },
+          {
+            name: "Add An Employee", 
+            value: "ADD_EMPLOYEE"
+          },
+          {
+            name: "Remove An Employee",
+            value: "REMOVE_EMPLOYEE"
+          },
+          {
+            name: "Update Employee Role", 
+            value: "UPDATE_EMPLOYEE_ROLE"
+          },
+          {
+            name: "Update Employee Manager",
+            value: "UPDATE_EMPLOYEE_MANAGER"
+          }
         ],
       },
   ])
 
   .then(function (response) {
-          console.log(response)
-
-    if (response.option === "View All Employees") {
-        return getEmployees;
-    } else if (response.option === "View All Employees By Department") {
-        return getDepartments;
-    } else if (response.option === "View All Employees By Manager") {
-        return getManagers;
-    } else {
-      fs.writeFile('index.html', generateHtml(employeeArr), err => {
-        if (err) throw err;
-        console.log('Portfolio complete! Check out index.html to see the output!');
-      })
+    console.log(response)
+      if (response.toDO === "VIEW_EMPLOYEES") {
+        return getEmployees();
+      } else if (response.toDO === "VIEW_EMPLOYEES_BY_DEPARTMENT") {
+          return getDepartments();
+      } else if (response.toDO === "VIEW_EMPLOYEES_BY_MANAGER") {
+          return getManagers();
+      } else {
+        fs.writeFile('index.html', generateHtml(employeeArr), err => {
+          if (err) throw err;
+          console.log('Portfolio complete! Check out index.html to see the output!');
+        })
     } 
 
     this.addDeptPrompt = [
