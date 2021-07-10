@@ -1,7 +1,8 @@
 const inquirer = require("inquirer");
+const db = require('./db/connection')
 const fetch = require('node-fetch')
 const cTable = require('console.table');
-const connect = require("db");
+// const connect = require("db");
 const mysql = require('mysql2')
 
 let empTable = [];  //in view all employees
