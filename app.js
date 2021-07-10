@@ -43,8 +43,9 @@ function mainPrompt() {
   ])
 
   .then(function (response) {
+          console.log(response)
+
     if (response.option === "View All Employees") {
-      // console.log(response)
         return getEmployees;
     } else if (response.option === "View All Employees By Department") {
         return getDepartments;
@@ -241,7 +242,6 @@ function mainPrompt() {
         await this.updateRole(data);
         return this.mainPrompt();
       })
-
 
   mainPrompt() 
     inquirer
