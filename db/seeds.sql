@@ -1,3 +1,5 @@
+USE emp_db;
+
 INSERT INTO departments (name)
 VALUES 
   ("Sales"),
