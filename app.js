@@ -93,13 +93,13 @@ const addEmployee = () => {
     message: 'Enter Department Name',
     name: 'department'
   })
-  .then(function(response) {
+  .then(function(res) {
     db.query( 
       'INSERT INTO department SET ?',
       {
         name: res.name
       },
-      function(err, response) {
+      function(err, res) {
         if (err) {
           throw err;
         }
@@ -150,7 +150,7 @@ const addEmployeeRole = () => {
 }
 
 const updateEmployeeRole = () => {
-  db.query('SELECT role.title AS Title, role.salary AS Salary FROM role', function(err,res) {
+  db.query('SELECT role.title AS Title, role.salary AS Salary FROM role', function(err, res) {
       inquirer.prompt([
           {
               name: 'Title',
@@ -180,7 +180,7 @@ const updateEmployeeRole = () => {
   mainPrompt()
 }
 
-function quitt() {
+function quit() {
   console.log(`You've exited the prompt.`);
   return
 }

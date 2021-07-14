@@ -1,6 +1,6 @@
 USE emp_db;
 
-INSERT INTO departments (name)
+INSERT INTO departments ()
 VALUES 
   ("Sales"),
   ("Finance"),
