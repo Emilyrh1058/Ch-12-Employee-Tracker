@@ -103,7 +103,7 @@ const addEmployee = () => {
     })
     .then(function (res) {
       db.query(
-        "INSERT INTO department SET ?",
+        "INSERT INTO departments SET ?",
         {
           name: res.name,
         },
@@ -145,7 +145,7 @@ const addEmployeeRole = () => {
         ])
         .then(function (res) {
           db.query(
-            "INSERT INTO role SET ?",
+            "INSERT INTO roles SET ?",
             {
               title: res.Title,
               salary: res.Salary,
@@ -180,7 +180,7 @@ const updateEmployeeRole = () => {
         ])
         .then(function (res) {
           db.query(
-            "INSERT INTO employee",
+            "INSERT INTO employees",
             {
               title: res.Title,
               salary: res.Salary,

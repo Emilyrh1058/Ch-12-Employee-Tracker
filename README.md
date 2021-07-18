@@ -1,1 +1,22 @@
-# Ch-12-Employee-Tracker
+# Employee Tracker
+
+## Description
+A terminal application that allows the use of a database call business_db to store data on employees, departments, roles and how that data is used to connect manager to an employee. There are several views for a user to deploy with ability to update data for specific things.
+
+## Contents
+* [Installation](#installation)
+* [Demo](#demo)
+* [Credits](#credits)
+* [Questions](#questions)
+
+## Installation
+This application needs to install: 
+```
+Inquirer, MySql
+```
+
+## Demo
+
+
+## Questions
+Should you have any further questions regarding this application please feel free to reach out to me via [GitHub](https://github.com/Emilyrh1058/) or [email](mailto:emilyrh1058@gmail.com).
