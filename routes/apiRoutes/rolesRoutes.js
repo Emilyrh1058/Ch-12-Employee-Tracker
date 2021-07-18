@@ -6,6 +6,7 @@ const inputCheck = require('../../utils/inputCheck');
 
 // GET ALL ROLES
 router.get('/roles', (req, res) => {
+  console.log("rolesRoutes")
   const sql = `SELECT 
                   r.id,
                   r.role,

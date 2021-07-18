@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS departments;
-CREATE DATABASE emp_db;
 
 CREATE TABLE departments (
   id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -10,8 +8,8 @@ CREATE TABLE roles (
   id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
   salary DECIMAL (10, 0) NOT NULL,
-  INDEX department_ind (department_id,)
-  CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE SET NULL
+  INDEX department_ind (department_id)
+  CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE CASCADE
 );
 
 CREATE TABLE employees (
